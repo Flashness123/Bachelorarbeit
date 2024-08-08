@@ -24,7 +24,7 @@ from typing import List
 from datasets import load_dataset
 import concurrent.futures
 
-file_path = r'C:\Users\lukask\Coding\Interface Projects\Detection\Complete_Data\Azure_Label\EPLASS Plannummernkonvention_20231016.xlsx'
+file_path = r'.\EPLASS Plannummernkonvention_20231016.xlsx'
 
 def extract_parentheses(text):
     # Find text within the first set of parentheses
@@ -516,18 +516,25 @@ num_labels = len(label_list)
 def main():
     # from huggingface_hub import notebook_login
     # notebook_login()
-    image = Image.open(r'C:\Users\lukask\Coding\Interface Projects\Detection\Complete_Data\fichtner_dataset_v2\png_with_label_downscaled_1_1_ground_truth\186953-413_D1_Index_03.png')
-    image = Image.open(r"C:\Users\lukask\Coding\Interface Projects\Detection\Complete_Data\fichtner_dataset_v2\png_with_label_downscaled_1_1_ground_truth\319.png")
+    image1 = Image.open(r".\png_with_label_downscaled_1_1_ground_truth\186953-413_D1_Index_03.png")
+    image2 = Image.open(r".\png_with_label_downscaled_1_1_ground_truth\319.png")
+    image3 = Image.open(r".\png_with_label_downscaled_1_1_ground_truth\000-7510-00000-99-GP-025-00002-00_Lageplan 7510_3_Mast_228_-_Gerüst_EICHS_1_A_13_1.png")
+    image4 = Image.open(r".\png_with_label_downscaled_1_1_ground_truth\458.png")
+    image5 = Image.open(r".\png_with_label_downscaled_1_1_ground_truth\NBR-1450-078A-01-GA-101-00001-01_Baugrunduntersuchung 1450-078A.png")
 
     #TODO: Neues giga image als Beispiel einfugen:
     # NBR-1450-078A-01-GA-101-00001-01_Baugrunduntersuchung 1450-078A_page_1
-    image.save("document.png")
+    image1.save("186953-413_D1_Index_03.png")
+    image2.save("319.png")
+    image3.save("000-7510-00000-99-GP-025-00002-00_Lageplan 7510_3_Mast_228_-_Gerüst_EICHS_1_A_13_1.png")
+    image4.save("458.png")
+    image5.save("NBR-1450-078A-01-GA-101-00001-01_Baugrunduntersuchung 1450-078A.png")
 
     #Gradio:
     title = "Document Metadata Extraction: My Bachelor's Thesis Demo"
     description = "Explore my bachelor's thesis project on document metadata extraction! This interactive demo utilizes LayoutLMv3 and Donut to showcase state-of-the-art techniques for understanding and analyzing document images. Upload your own image or try the example to see how the model extracts key information"
     article = "<p style='text-align: center'><a href='https://github.com/Flashness123/Bachelorarbeit/tree/main'>Thesis: Verbesserung der Token-Klassifikation in technischen Zeichnungen durch den Einsatz von Transformer-basierten Modellen</a> | <a href='https://github.com/microsoft/unilm'>Github Repo</a></p>"
-    examples =[['document.png']]
+    examples =[["186953-413_D1_Index_03.png"], ["319.png"], ["000-7510-00000-99-GP-025-00002-00_Lageplan 7510_3_Mast_228_-_Gerüst_EICHS_1_A_13_1.png"], ["458.png"], ["NBR-1450-078A-01-GA-101-00001-01_Baugrunduntersuchung 1450-078A.png"]]
 
     css = """.output_image, .input_image {height: 600px !important}"""
 
